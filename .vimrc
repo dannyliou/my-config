@@ -13,6 +13,12 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -52,7 +58,7 @@ set ignorecase
 set nocompatible
 " vim 自身命令行模式智能补全
 set wildmenu 
-let g:user_emmet_expandabbr_key = '<C-q>,'
+let g:user_emmet_expandabbr_key = '<C-y>,'
 let mapleader=";"
 " 设置快捷键将系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
@@ -61,8 +67,16 @@ imap <c-k> <up>
 imap <c-l> <right>
 imap <c-h> <left>
 set background=dark
+colorscheme murphytango
+"js-beautify plugin config
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+"set background=light
 "colorscheme solarized
-colorscheme molokai
+"colorscheme molokai
 "colorscheme phd
 let g:molokai_original = 1
 " 显示光标当前位置
@@ -96,3 +110,10 @@ set softtabstop=4
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
+" temp file to the given fold
+"设置取消备份 禁止临时文件生成
+set nobackup
+set noswapfile
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
