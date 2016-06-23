@@ -68,12 +68,26 @@ imap <c-l> <right>
 imap <c-h> <left>
 set background=dark
 colorscheme murphytango
+syntax enable
 "js-beautify plugin config
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
-autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
-autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+".vimrc
+map <c-f> :call JsBeautify()<cr>
+"" or
+ autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+ autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" " for jsx
+ autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" " for html
+ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" " for css or scss
+ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+"NERDTree config begin
+map <C-n> :NERDTreeToggle<CR>
+"open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"NERDTree config end
 "set background=light
 "colorscheme solarized
 "colorscheme molokai
