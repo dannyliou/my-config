@@ -1,2 +1,2 @@
-# my-vimrc
-my .vimrc file
+# config files
+.vimrc .bashrc .gitconfig ... 
